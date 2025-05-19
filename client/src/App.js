@@ -15,7 +15,7 @@ function App() {
 
   const fetchWeather = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
+      const response = await fetch(`/api/weather?city=${city}`);
       const data = await response.json();
       setWeather(data);
     } catch (error) {
@@ -25,7 +25,7 @@ function App() {
 
   const handleSubscribe = async (subscriptionData) => {
     try {
-      const response = await fetch('http://localhost:5000/api/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ function App() {
       <CityInput city={city} setCity={setCity} fetchWeather={fetchWeather} />
 
       {weather && (
-        <WeatherDisplay 
-          weather={weather} 
-          onSubscribe={!isSubscribed ? () => setIsSubscribing(true) : null} 
+        <WeatherDisplay
+          weather={weather}
+          onSubscribe={!isSubscribed ? () => setIsSubscribing(true) : null}
         />
       )}
 
@@ -68,9 +68,9 @@ function App() {
       )}
 
       {isSubscribed && (
-        <SubscriptionStatus 
-          city={city} 
-          onUnsubscribe={handleUnsubscribe} 
+        <SubscriptionStatus
+          city={city}
+          onUnsubscribe={handleUnsubscribe}
         />
       )}
 
